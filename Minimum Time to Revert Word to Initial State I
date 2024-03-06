@@ -1,27 +1,23 @@
 https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-i/
 
-Approach:
-
-
-
-
 code:
 
 class Solution {
     public int minimumTimeToInitialState(String word, int k) {
-        String copy=word;
-        int count=0;
+        String copy=word;  //copy the original string
+        int count=0;       //to count minimun time
         int n=word.length();
         do{
-            copy=copy.substring(k)+"*".repeat(k);
-            count++;
+            copy=copy.substring(k)+"*".repeat(k);//using a while loop extract substring in copy leaving k strings behind and append character "*" k times to copy
+            count++;                               //each time in loop increment
 
-        }while(!compare(word,copy,n));
+        }while(!compare(word,copy,n));             //if not equal loop
         return count;
     }
-    public boolean compare(String word,String word2, int n){
+    public boolean compare(String word,String word2, int n){                //to check whether two strings are equal 
       for(int i=0;i<n;i++){
-          if(word2.charAt(i)!='*' && word.charAt(i)!=word2.charAt(i) )return false;
+          if(word2.charAt(i)!='*' && word.charAt(i)!=word2.charAt(i) )return false;   // if character at i th position in word is something and in copy is  *  or same characterit is equal 
+                                                                                    // if character at ith postion in word is not equal to copy ith character and copy is not equal to * then it is not equal
       }
       return true;
     }
