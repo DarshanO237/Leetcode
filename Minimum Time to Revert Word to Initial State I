@@ -1,0 +1,28 @@
+https://leetcode.com/problems/minimum-time-to-revert-word-to-initial-state-i/
+
+Approach:
+
+
+
+
+code:
+
+class Solution {
+    public int minimumTimeToInitialState(String word, int k) {
+        String copy=word;
+        int count=0;
+        int n=word.length();
+        do{
+            copy=copy.substring(k)+"*".repeat(k);
+            count++;
+
+        }while(!compare(word,copy,n));
+        return count;
+    }
+    public boolean compare(String word,String word2, int n){
+      for(int i=0;i<n;i++){
+          if(word2.charAt(i)!='*' && word.charAt(i)!=word2.charAt(i) )return false;
+      }
+      return true;
+    }
+}
